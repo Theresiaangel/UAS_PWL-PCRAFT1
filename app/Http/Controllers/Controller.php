@@ -7,7 +7,7 @@ abstract class Controller
     protected $fillable = [
     'nama_customer', 
     'email', 
-    'nomor_telepon', // Pastikan ini ada dan ejaannya sama dengan di database
+    'nomor_telepon', //
     'alamat'
 ];
 }

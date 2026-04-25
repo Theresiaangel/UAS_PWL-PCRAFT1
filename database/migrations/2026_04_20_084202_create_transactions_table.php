@@ -15,9 +15,9 @@ return new class extends Migration
         $table->id();
         $table->date('tanggal'); 
         $table->string('keterangan_produk'); 
-        $table->decimal('harga_satuan', 15, 2); // Untuk uang
-        $table->integer('jumlah_barang');       // Nama kolom konsisten
-        $table->decimal('total', 15, 2);        // Nama kolom konsisten
+        $table->decimal('harga_satuan', 15, 2); 
+        $table->integer('jumlah_barang');  
+        $table->decimal('total', 15, 2);      
         $table->timestamps();
     });
 }

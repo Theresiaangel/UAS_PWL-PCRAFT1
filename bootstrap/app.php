@@ -12,15 +12,13 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     
     ->withMiddleware(function (Middleware $middleware): void {
-        // Mendaftarkan alias middleware admin Anda
         $middleware->alias([
             'admin' => \App\Http\Middleware\AdminMiddleware::class,
         ]);
 
-        // MENGUBAH TUJUAN REDIRECT SETELAH LOGIN
         $middleware->redirectTo(
             guests: '/login',
-            users: '/transactions', // Diarahkan ke sini setelah login berhasil
+            users: '/transactions', 
         );
     })
     

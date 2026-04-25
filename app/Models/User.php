@@ -21,8 +21,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
-    // pakai versi lama
+    
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];

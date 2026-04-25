@@ -30,9 +30,9 @@ pest()->extend(TestCase::class)
 */
 
 expect()->extend('toBeOne', function () {
+    /** @var \Pest\Expectation $this */
     return $this->toBe(1);
 });
-
 /*
 |--------------------------------------------------------------------------
 | Functions

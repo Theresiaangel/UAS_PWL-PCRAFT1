@@ -23,7 +23,7 @@ return new class extends Migration
             $table->bigInteger('expiration')->index();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      */
