@@ -2,9 +2,9 @@
 @include('transactions.index')
 
 {{-- Overlay Pop-up Edit Transaksi --}}
-<div style="position: fixed; inset: 0; background: rgba(0, 0, 0, 0.4); display: flex; align-items: center; justify-content: center; z-index: 9999; backdrop-filter: blur(2px);">
+<div style="position: fixed; inset: 0; background: rgba(0, 0, 0, 0.4); display: flex; align-items: flex-start; justify-content: center; z-index: 9999; backdrop-filter: blur(2px); overflow-y: auto; padding: 40px 20px;">
     
-    <div style="background: white; width: 650px; border-radius: 60px; padding: 50px; box-shadow: 0 15px 40px rgba(0,0,0,0.3); position: relative;">
+    <div style="background: white; width: 650px; border-radius: 60px; padding: 50px; box-shadow: 0 15px 40px rgba(0,0,0,0.3); position: relative; margin: auto;">
         <h2 style="font-family: 'Times New Roman', serif; text-align: center; font-weight: bold; margin-bottom: 30px; font-size: 28px;">Edit Transaksi Penjualan</h2>
         <form action="{{ route('transactions.update', $transaction->id) }}" method="POST" style="font-family: 'Times New Roman', serif;">
             @csrf

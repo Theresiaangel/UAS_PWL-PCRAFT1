@@ -27,18 +27,31 @@ class CustomerController extends Controller
     public function store(Request $request) 
     {
         $request->validate([
-            'nama_customer'=> 'required',
+            'customer_name'=> 'required',
             'email'=> 'required|email',
-            'nomor_telepon'=>'required',
-            'alamat' => 'required',
+            'phone_number'=>'required',
+            'address' => 'required',
         ]);
 
-        Customer::create($request->all());
+        $data = $request->all();
+        $data['user_id'] = auth()->id();
+
+        Customer::create($data);
         return redirect()->route('customers.index');
     }
 
     public function update(Request $request, Customer $customer) {
-        $customer->update($request->all());
+        $request->validate([
+            'customer_name'=> 'required',
+            'email'=> 'required|email',
+            'phone_number'=>'required',
+            'address' => 'required',
+        ]);
+
+        $data = $request->all();
+        $data['user_id'] = auth()->id();
+
+        $customer->update($data);
         return redirect()->route('customers.index');
     }
 

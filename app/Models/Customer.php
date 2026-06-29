@@ -8,9 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Customer extends Model
 {
     protected $fillable = [
-        'nama_customer', 
+        'customer_name', 
         'email', 
-        'nomor_telepon', 
-        'alamat'
+        'phone_number', 
+        'address',
+        'user_id'
     ];
+
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function getPurchaseCountAttribute() {
+        return \App\Models\Transaction::where('nama_pembeli', $this->customer_name)->count();
+    }
 }

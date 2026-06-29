@@ -2,10 +2,10 @@
 @include('transactions.index')
 
 {{-- Overlay Pop-up --}}
-<div style="position: fixed; inset: 0; background: rgba(0, 0, 0, 0.4); display: flex; align-items: center; justify-content: center; z-index: 9999; backdrop-filter: blur(2px);">
+<div style="position: fixed; inset: 0; background: rgba(0, 0, 0, 0.4); display: flex; align-items: flex-start; justify-content: center; z-index: 9999; backdrop-filter: blur(2px); overflow-y: auto; padding: 40px 20px;">
     
     {{-- Kotak Form Pop-up --}}
-    <div style="background: white; width: 650px; border-radius: 40px; padding: 40px; box-shadow: 0 15px 40px rgba(0,0,0,0.3); position: relative;">
+    <div style="background: white; width: 650px; border-radius: 40px; padding: 40px; box-shadow: 0 15px 40px rgba(0,0,0,0.3); position: relative; margin: auto;">
         <form action="{{ route('transactions.store') }}" method="POST" style="font-family: 'Times New Roman', serif;">
             @csrf
             
@@ -69,11 +69,30 @@
             </div>
             
             {{-- Input Nama Pembeli --}}
-            <div style="margin-bottom: 25px;">
+            <div style="margin-bottom: 10px;">
                 <label style="display: block; font-weight: bold; font-size: 18px; margin-left: 15px; margin-bottom: 5px;">Nama Pembeli</label>
                 <input type="text" name="nama_pembeli" value="{{ old('nama_pembeli') }}" required 
                     style="width: 100%; border: 1.5px solid #000; border-radius: 50px; padding: 8px 20px; font-size: 16px; outline: none; box-sizing: border-box;">
                 @error('nama_pembeli') <small style="color: red; margin-left: 15px;">{{ $message }}</small> @enderror
+            </div>
+
+            {{-- Input Data Customer Tambahan --}}
+            <div style="margin-bottom: 10px;">
+                <label style="display: block; font-weight: bold; font-size: 18px; margin-left: 15px; margin-bottom: 5px;">Email <small style="font-weight: normal; color: #666;">(Untuk Customer Baru)</small></label>
+                <input type="email" name="email" value="{{ old('email') }}" 
+                    style="width: 100%; border: 1.5px solid #000; border-radius: 50px; padding: 8px 20px; font-size: 16px; outline: none; box-sizing: border-box;" placeholder="Opsional jika customer sudah ada">
+            </div>
+
+            <div style="margin-bottom: 10px;">
+                <label style="display: block; font-weight: bold; font-size: 18px; margin-left: 15px; margin-bottom: 5px;">Nomor Telepon <small style="font-weight: normal; color: #666;">(Untuk Customer Baru)</small></label>
+                <input type="text" name="phone_number" value="{{ old('phone_number') }}" 
+                    style="width: 100%; border: 1.5px solid #000; border-radius: 50px; padding: 8px 20px; font-size: 16px; outline: none; box-sizing: border-box;" placeholder="Opsional jika customer sudah ada">
+            </div>
+
+            <div style="margin-bottom: 25px;">
+                <label style="display: block; font-weight: bold; font-size: 18px; margin-left: 15px; margin-bottom: 5px;">Alamat <small style="font-weight: normal; color: #666;">(Untuk Customer Baru)</small></label>
+                <input type="text" name="address" value="{{ old('address') }}" 
+                    style="width: 100%; border: 1.5px solid #000; border-radius: 50px; padding: 8px 20px; font-size: 16px; outline: none; box-sizing: border-box;" placeholder="Opsional jika customer sudah ada">
             </div>
 
             {{-- Container Tombol --}}

@@ -2,10 +2,10 @@
 @include('customers.index')
 
 {{-- Overlay Pop-up Edit --}}
-<div style="position: fixed; inset: 0; background: rgba(0, 0, 0, 0.4); display: flex; align-items: center; justify-content: center; z-index: 9999; backdrop-filter: blur(2px);">
+<div style="position: fixed; inset: 0; background: rgba(0, 0, 0, 0.4); display: flex; align-items: flex-start; justify-content: center; z-index: 9999; backdrop-filter: blur(2px); overflow-y: auto; padding: 40px 20px;">
     
     {{-- Kotak Form Pop-up --}}
-    <div style="background: white; width: 650px; border-radius: 60px; padding: 50px; box-shadow: 0 15px 40px rgba(0,0,0,0.3); position: relative;">
+    <div style="background: white; width: 650px; border-radius: 60px; padding: 50px; box-shadow: 0 15px 40px rgba(0,0,0,0.3); position: relative; margin: auto;">
         
         <h2 style="font-family: 'Times New Roman', serif; text-align: center; font-weight: bold; margin-bottom: 30px; font-size: 28px;">Edit Customer</h2>
 
@@ -16,7 +16,7 @@
             {{-- Input Nama --}}
             <div style="margin-bottom: 20px;">
                 <label style="display: block; font-weight: bold; font-size: 20px; margin-left: 20px; margin-bottom: 8px;">Nama</label>
-                <input type="text" name="nama_customer" value="{{ $customer->nama_customer }}" required 
+                <input type="text" name="customer_name" value="{{ $customer->customer_name }}" required 
                     style="width: 100%; border: 3px solid #000; border-radius: 50px; padding: 12px 25px; font-size: 18px; outline: none; box-sizing: border-box;">
             </div>
 
@@ -30,14 +30,14 @@
             {{-- Input Nomor Telepon --}}
             <div style="margin-bottom: 20px;">
                 <label style="display: block; font-weight: bold; font-size: 20px; margin-left: 20px; margin-bottom: 8px;">Nomor Telepon</label>
-                <input type="text" name="nomor_telepon" value="{{ $customer->nomor_telepon }}" required 
+                <input type="text" name="phone_number" value="{{ $customer->phone_number }}" required 
                     style="width: 100%; border: 3px solid #000; border-radius: 50px; padding: 12px 25px; font-size: 18px; outline: none; box-sizing: border-box;">
             </div>
 
             {{-- Input Alamat --}}
             <div style="margin-bottom: 40px;">
                 <label style="display: block; font-weight: bold; font-size: 20px; margin-left: 20px; margin-bottom: 8px;">Alamat</label>
-                <input type="text" name="alamat" value="{{ $customer->alamat }}" required 
+                <input type="text" name="address" value="{{ $customer->address }}" required 
                     style="width: 100%; border: 3px solid #000; border-radius: 50px; padding: 12px 25px; font-size: 18px; outline: none; box-sizing: border-box;">
             </div>
 

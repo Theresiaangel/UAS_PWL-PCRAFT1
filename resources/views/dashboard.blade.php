@@ -11,11 +11,19 @@
                 <th width="20%">Nama produk</th>
                 <th width="25%" style="font-weight: normal; color: #333;">Nama Pembeli</th>
                 <th width="30%">Total Nominal Pembelian</th>
-                <th width="25%">Jumlah Pembelian</th>
+                <th width="25%">Pembelian Terbanyak</th>
             </tr>
         </thead>
         <tbody>
-            @for ($i = 0; $i < 5; $i++)
+            @foreach($topBuyers as $buyer)
+                <tr>
+                    <td style="height: 50px; text-align: center;">{{ $buyer->top_product }}</td>
+                    <td style="text-align: center;">{{ $buyer->nama_pembeli }}</td>
+                    <td style="text-align: center;">Rp {{ number_format($buyer->total_nominal, 0, ',', '.') }}</td>
+                    <td style="text-align: center;">{{ $buyer->total_transactions }}</td>
+                </tr>
+            @endforeach
+            @for ($i = count($topBuyers); $i < 5; $i++)
                 <tr>
                     <td style="height: 50px;"></td>
                     <td></td>

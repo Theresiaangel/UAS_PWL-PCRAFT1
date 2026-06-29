@@ -22,7 +22,15 @@ Route::get('/buat-admin', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    // Get top 5 buyers by count of purchases, or total spent. Let's do by count or sum of quantity.
+    // We will group by nama_pembeli.
+    $topBuyers = \App\Models\Transaction::selectRaw('nama_pembeli, COUNT(id) as total_transactions, SUM(total) as total_nominal, SUM(quantity) as total_quantity, MAX(product_description) as top_product')
+        ->groupBy('nama_pembeli')
+        ->orderByDesc('total_transactions') // Using total transactions as "pembelian terbanyak"
+        ->limit(5)
+        ->get();
+
+    return view('dashboard', compact('topBuyers'));
 })->middleware(['auth'])->name('dashboard');
 
 Route::middleware(['auth', 'verified', 'admin'])->group(function () {
