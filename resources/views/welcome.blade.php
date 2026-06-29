@@ -69,7 +69,7 @@
     <body>
         <div class="welcome-container">
             <h1>PCRAFT</h1>
-            <p>Selamat datang di aplikasi manajemen transaksi Pcraft. Kelola transaaksi penjualan dan daftar customer dengan lebih mudah dan cepat.</p>
+            <p>Selamat datang di aplikasi manajemen transaksi Pcraft. Kelola transaksi penjualan dan daftar customer dengan lebih mudah dan cepat.</p>
 
             <div class="btn-group">
                 @if (Route::has('login'))

@@ -104,7 +104,6 @@
     <div class="header">
         <div class="header-left">
             <div class="logo-box">
-                {{-- Ganti 'logo.png' sesuai nama file Anda di public/images/ --}}
                 <img src="{{ asset('./images/logo bisnis pcraft.png') }}" alt="logo bisnis pcraft.png">
             </div>
             <a href="{{ route('transactions.index') }}" class="nav-link {{ Request::is('transactions*') ? 'active' : '' }}">Transaksi Penjualan</a>
