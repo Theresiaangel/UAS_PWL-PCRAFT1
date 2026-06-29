@@ -13,28 +13,35 @@
             {{-- Input Tanggal --}}
             <div style="margin-bottom: 20px;">
                 <label style="display: block; font-weight: bold; font-size: 20px; margin-left: 20px; margin-bottom: 8px;">Tanggal</label>
-                <input type="date" name="tanggal" value="{{ $transaction->tanggal }}" required 
+                <input type="date" name="date" value="{{ $transaction->date }}" required 
                     style="width: 100%; border: 3px solid #000; border-radius: 50px; padding: 12px 25px; font-size: 18px; outline: none; box-sizing: border-box;">
             </div>
 
             {{-- Input Keterangan Produk --}}
             <div style="margin-bottom: 20px;">
                 <label style="display: block; font-weight: bold; font-size: 20px; margin-left: 20px; margin-bottom: 8px;">Keterangan Produk</label>
-                <input type="text" name="keterangan_produk" value="{{ $transaction->keterangan_produk }}" required 
+                <input type="text" name="product_description" value="{{ $transaction->product_description }}" required 
+                    style="width: 100%; border: 3px solid #000; border-radius: 50px; padding: 12px 25px; font-size: 18px; outline: none; box-sizing: border-box;">
+            </div>
+
+            {{-- Input Nama Pembeli --}}
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; font-weight: bold; font-size: 20px; margin-left: 20px; margin-bottom: 8px;">Nama Pembeli</label>
+                <input type="text" name="nama_pembeli" value="{{ $transaction->nama_pembeli }}" required 
                     style="width: 100%; border: 3px solid #000; border-radius: 50px; padding: 12px 25px; font-size: 18px; outline: none; box-sizing: border-box;">
             </div>
 
             {{-- Input Harga Satuan --}}
             <div style="margin-bottom: 20px;">
                 <label style="display: block; font-weight: bold; font-size: 20px; margin-left: 20px; margin-bottom: 8px;">Harga Satuan</label>
-                <input type="number" name="harga_satuan" value="{{ $transaction->harga_satuan }}" required 
+                <input type="number" name="unit_price" value="{{ $transaction->unit_price }}" required 
                     style="width: 100%; border: 3px solid #000; border-radius: 50px; padding: 12px 25px; font-size: 18px; outline: none; box-sizing: border-box;">
             </div>
 
             {{-- PERBAIKAN: Input Jumlah Barang (Disesuaikan dengan Model Transaction) --}}
             <div style="margin-bottom: 40px;">
                 <label style="display: block; font-weight: bold; font-size: 20px; margin-left: 20px; margin-bottom: 8px;">Jumlah Barang</label>
-                <input type="number" name="jumlah_barang" value="{{ $transaction->jumlah_barang }}" required 
+                <input type="number" name="quantity" value="{{ $transaction->quantity }}" required 
                     style="width: 100%; border: 3px solid #000; border-radius: 50px; padding: 12px 25px; font-size: 18px; outline: none; box-sizing: border-box;">
             </div>
 

@@ -6,10 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 class Transaction extends Model
 {
     protected $fillable = [
-        'tanggal', 
-        'keterangan_produk', 
-        'jumlah_barang', 
-        'harga_satuan', 
-        'total'
+        'date', 
+        'product_description', 
+        'quantity', 
+        'unit_price', 
+        'total',
+        'nama_pembeli',
+        'user_id'
     ];
+
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

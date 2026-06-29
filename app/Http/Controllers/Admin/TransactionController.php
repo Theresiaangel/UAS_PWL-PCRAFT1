@@ -9,27 +9,29 @@ use Illuminate\Http\Request;
 class TransactionController extends Controller
 {
     public function index() {
-        $transactions = Transaction::orderBy('tanggal', 'desc')->get();
+        $transactions = Transaction::orderBy('date', 'desc')->get();
         return view('transactions.index', compact('transactions'));
     }
 
     public function create() {
-        $transactions = Transaction::orderBy('tanggal', 'desc')->get();
+        $transactions = Transaction::orderBy('date', 'desc')->get();
         return view('transactions.create', compact('transactions'));
     }
 
     public function store(Request $request) {
     // Pastikan nama di dalam validate sama dengan di form
     $request->validate([
-        'tanggal' => 'required',
-        'keterangan_produk' => 'required',
-        'harga_satuan' => 'required|numeric',
-        'jumlah_barang' => 'required|numeric',
+        'date' => 'required',
+        'product_description' => 'required',
+        'unit_price' => 'required|numeric',
+        'quantity' => 'required|numeric',
+        'nama_pembeli' => 'required'
     ]);
 
     $data = $request->all();
     
-    $data['total'] = $request->harga_satuan * $request->jumlah_barang;
+    $data['total'] = $request->unit_price * $request->quantity;
+    $data['user_id'] = auth()->id();
 
     // Simpan ke database
     Transaction::create($data);
@@ -38,22 +40,24 @@ class TransactionController extends Controller
 }
 
     public function edit(Transaction $transaction) {
-        $transactions = Transaction::orderBy('tanggal', 'desc')->get();
+        $transactions = Transaction::orderBy('date', 'desc')->get();
         return view('transactions.edit', compact('transaction', 'transactions'));
     }
 
     public function update(Request $request, Transaction $transaction) {
     $request->validate([
-        'tanggal' => 'required|date',
-        'keterangan_produk' => 'required',
-        'harga_satuan' => 'required|numeric',
-        'jumlah_barang' => 'required|numeric', // Ganti dari 'jumlah'
+        'date' => 'required|date',
+        'product_description' => 'required',
+        'unit_price' => 'required|numeric',
+        'quantity' => 'required|numeric',
+        'nama_pembeli' => 'required'
     ]);
 
     $data = $request->all();
     
-    // PERBAIKAN: Gunakan 'total' dan 'jumlah_barang' agar sinkron dengan database
-    $data['total'] = $request->harga_satuan * $request->jumlah_barang;
+    // PERBAIKAN: Gunakan 'total' dan 'quantity' agar sinkron dengan database
+    $data['total'] = $request->unit_price * $request->quantity;
+    $data['user_id'] = auth()->id();
 
     $transaction->update($data);
     

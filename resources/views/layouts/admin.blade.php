@@ -44,13 +44,13 @@
         .nav-link {
             color: white; text-decoration: none;
             font-size: 18px; font-weight: bold; margin-right: 40px;
+            padding: 10px 20px; border-radius: 10px;
         }
 
         /* Tombol Aktif dengan Shadow */
         .nav-link.active {
-            background: rgba(255,255,255,0.2);
-            padding: 10px 20px; border-radius: 20px;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+            background: #b30000; /* Darker red */
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
         }
 
         /* Styling Tombol Logout */
@@ -72,6 +72,41 @@
         .logout-btn:hover {
             background-color: #f2f2f2;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Dropdown Menu */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 50px;
+            background-color: white;
+            min-width: 150px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a, .dropdown-content button {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .dropdown-content a:hover, .dropdown-content button:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown-content.show {
+            display: block;
         }
 
         .container { padding: 40px; }
@@ -107,17 +142,26 @@
                 {{-- Ganti 'logo.png' sesuai nama file Anda di public/images/ --}}
                 <img src="{{ asset('./images/logo bisnis pcraft.png') }}" alt="logo bisnis pcraft.png">
             </div>
+            <a href="{{ route('dashboard') }}" class="nav-link {{ Request::is('dashboard*') || Request::is('/') ? 'active' : '' }}">Dashboard</a>
+            <a href="#" class="nav-link">Katalog Produk</a>
             <a href="{{ route('transactions.index') }}" class="nav-link {{ Request::is('transactions*') ? 'active' : '' }}">Transaksi Penjualan</a>
             <a href="{{ route('customers.index') }}" class="nav-link {{ Request::is('customers*') ? 'active' : '' }}">Daftar Customer</a>
         </div>
 
-        <div class="header-right">
-            <form action="{{ route('logout') }}" method="POST" onsubmit="return confirm('Yakin ingin keluar?')">
-                @csrf
-                <button type="submit" class="logout-btn">
-                    <span style="font-size: 20px;">⏻</span> Logout
-                </button>
-            </form>
+        <div class="header-right" style="position: relative;">
+            <div id="hamburger-menu" style="cursor: pointer; display: flex; flex-direction: column; gap: 6px; padding: 5px;" onclick="toggleDropdown(event)">
+                <div style="width: 35px; height: 5px; background-color: white; border-radius: 3px;"></div>
+                <div style="width: 35px; height: 5px; background-color: white; border-radius: 3px;"></div>
+                <div style="width: 35px; height: 5px; background-color: white; border-radius: 3px;"></div>
+            </div>
+
+            <div id="dropdown-menu" class="dropdown-content">
+                <a href="{{ route('profile.edit') }}">Profil</a>
+                <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
+                    @csrf
+                    <button type="submit" onclick="return confirm('Yakin ingin keluar?')">Logout</button>
+                </form>
+            </div>
         </div>
     </div>
 
@@ -126,4 +170,22 @@
     </div>
 
 </body>
+<script>
+    function toggleDropdown(event) {
+        event.stopPropagation();
+        document.getElementById('dropdown-menu').classList.toggle('show');
+    }
+
+    window.onclick = function(event) {
+        if (!event.target.matches('#hamburger-menu') && !event.target.closest('#hamburger-menu')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            for (var i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+</script>
 </html>
