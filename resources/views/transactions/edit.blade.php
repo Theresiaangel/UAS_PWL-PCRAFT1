@@ -26,25 +26,49 @@
                 <input type="hidden" name="product_description" id="product_description" value="{{ $transaction->product_description }}" required>
                 
                 {{-- Dropdown Options --}}
-                <div id="productOptions" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; border: 2px solid #8B5CF6; border-radius: 20px; margin-top: -15px; z-index: 10; overflow: hidden; padding: 10px 0;">
-                    <div style="max-height: 150px; overflow-y: auto;">
-                        <div class="product-option" data-name="Cermin" data-price="4000" style="padding: 5px 20px; display: flex; justify-content: space-between; cursor: pointer; font-size: 16px;">
-                            <span>Cermin</span><span>Rp4000</span>
+                <div id="productOptions" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1.5px solid #000; border-radius: 20px; margin-top: 5px; z-index: 10; overflow: hidden; padding: 10px 0;">
+                    <div style="max-height: 150px; overflow-y: auto; padding-right: 5px;">
+                        <div class="product-option" data-name="Cermin" data-price="4000" style="padding: 5px 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-size: 16px; font-weight: bold;">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <img src="{{ asset('images/Cermin.jpg') }}" alt="Cermin" style="width: 24px; height: 24px; border-radius: 50%; object-fit: cover; border: 1px solid #ccc;">
+                                <span>Cermin</span>
+                            </div>
+                            <span>Rp4000</span>
                         </div>
-                        <div class="product-option" data-name="Pot bunga" data-price="25000" style="padding: 5px 20px; display: flex; justify-content: space-between; cursor: pointer; font-size: 16px;">
-                            <span>Pot bunga</span><span>Rp25000</span>
+                        <div class="product-option" data-name="Pot bunga" data-price="25000" style="padding: 5px 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-size: 16px; font-weight: bold;">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <img src="{{ asset('images/Pot Bunga.jpeg') }}" alt="Pot bunga" style="width: 24px; height: 24px; border-radius: 50%; object-fit: cover; border: 1px solid #ccc;">
+                                <span>Pot bunga</span>
+                            </div>
+                            <span>Rp25000</span>
                         </div>
-                        <div class="product-option" data-name="Gantungan karakter" data-price="10000" style="padding: 5px 20px; display: flex; justify-content: space-between; cursor: pointer; font-size: 16px;">
-                            <span>Gantungan karakter</span><span>Rp10000</span>
+                        <div class="product-option" data-name="Gantungan karakter" data-price="10000" style="padding: 5px 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-size: 16px; font-weight: bold;">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <img src="{{ asset('images/Gantungan Karakter.jpg') }}" alt="Gantungan karakter" style="width: 24px; height: 24px; border-radius: 50%; object-fit: cover; border: 1px solid #ccc;">
+                                <span>Gantungan karakter</span>
+                            </div>
+                            <span>Rp10000</span>
                         </div>
-                        <div class="product-option" data-name="Gantungan Pita" data-price="3000" style="padding: 5px 20px; display: flex; justify-content: space-between; cursor: pointer; font-size: 16px;">
-                            <span>Gantungan Pita</span><span>Rp3000</span>
+                        <div class="product-option" data-name="Gantungan Pita" data-price="3000" style="padding: 5px 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-size: 16px; font-weight: bold;">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <img src="{{ asset('images/Gantungan Pita.jpg') }}" alt="Gantungan Pita" style="width: 24px; height: 24px; border-radius: 50%; object-fit: cover; border: 1px solid #ccc;">
+                                <span>Gantungan Pita</span>
+                            </div>
+                            <span>Rp3000</span>
                         </div>
-                        <div class="product-option" data-name="Gantungan Pita Kupu-kupu" data-price="4000" style="padding: 5px 20px; display: flex; justify-content: space-between; cursor: pointer; font-size: 16px;">
-                            <span>Gantungan Pita Kupu-kupu</span><span>Rp4000</span>
+                        <div class="product-option" data-name="Gantungan Pita Kupu-kupu" data-price="4000" style="padding: 5px 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-size: 16px; font-weight: bold;">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <img src="{{ asset('images/Gantungan Pita Kupu-kupu.jpg') }}" alt="Gantungan Pita Kupu-kupu" style="width: 24px; height: 24px; border-radius: 50%; object-fit: cover; border: 1px solid #ccc;">
+                                <span>Gantungan Pita Kupu-kupu</span>
+                            </div>
+                            <span>Rp4000</span>
                         </div>
-                        <div class="product-option" data-name="Bunga" data-price="6000" style="padding: 5px 20px; display: flex; justify-content: space-between; cursor: pointer; font-size: 16px;">
-                            <span>Bunga</span><span>Rp6000</span>
+                        <div class="product-option" data-name="Bunga" data-price="10000" style="padding: 5px 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-size: 16px; font-weight: bold;">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <img src="{{ asset('images/Bunga.jpg') }}" alt="Bunga" style="width: 24px; height: 24px; border-radius: 50%; object-fit: cover; border: 1px solid #ccc;">
+                                <span>Bunga</span>
+                            </div>
+                            <span>Rp10000</span>
                         </div>
                     </div>
                 </div>

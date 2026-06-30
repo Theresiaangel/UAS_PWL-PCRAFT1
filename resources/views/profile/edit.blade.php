@@ -11,7 +11,11 @@
             {{-- Placeholder Image --}}
             <div style="width: 150px; height: 150px; border-radius: 10px; overflow: hidden; border: 1px solid #ddd; flex-shrink: 0;">
                 @if(auth()->user()->email === 'ebet@gmail.com')
-                    <img src="{{ asset('images/ebet.jpg') }}" alt="Profile Picture" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                    <img src="{{ asset('images/Ebet.jpeg') }}" alt="Profile Picture" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                @elseif(auth()->user()->email === 'terew@gmail.com')
+                    <img src="{{ asset('images/Tere.jpeg') }}" alt="Profile Picture" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                @elseif(auth()->user()->email === 'evelyn@gmail.com')
+                    <img src="{{ asset('images/evelyn.jpeg') }}" alt="Profile Picture" style="width: 100%; height: 100%; object-fit: cover; display: block;">
                 @else
                     <svg viewBox="0 0 100 100" style="width: 100%; height: 100%; display: block;" xmlns="http://www.w3.org/2000/svg">
                         <!-- Sky -->
@@ -27,15 +31,21 @@
             </div>
             
             {{-- User Details --}}
-            <div style="font-size: 20px; font-weight: bold; line-height: 1.6; margin-top: 20px;">
+            <div style="font-size: 16px; font-weight: bold; line-height: 1.6; margin-top: 20px;">
                 <div style="display: flex;">
                     <span style="width: 80px;">Nama</span>
-                    <span>: {{ auth()->user()->name }}</span>
+                    <span>: {{ auth()->user()->email === 'terew@gmail.com' ? 'Theresia Angelita Simatupang' : auth()->user()->name }}</span>
                 </div>
                 <div style="display: flex;">
                     <span style="width: 80px;">Email</span>
                     <span>: {{ auth()->user()->email }}</span>
                 </div>
+                @if(auth()->user()->email === 'terew@gmail.com')
+                <div style="display: flex;">
+                    <span style="width: 80px;">Jabatan</span>
+                    <span>: Marketing</span>
+                </div>
+                @endif
             </div>
         </div>
         
