@@ -142,7 +142,6 @@
                 <img src="{{ asset('./images/logo bisnis pcraft.png') }}" alt="logo bisnis pcraft.png">
             </div>
             <a href="{{ route('dashboard') }}" class="nav-link {{ Request::is('dashboard*') || Request::is('/') ? 'active' : '' }}">Dashboard</a>
-            <a href="#" class="nav-link">Katalog Produk</a>
             <a href="{{ route('transactions.index') }}" class="nav-link {{ Request::is('transactions*') ? 'active' : '' }}">Transaksi Penjualan</a>
             <a href="{{ route('customers.index') }}" class="nav-link {{ Request::is('customers*') ? 'active' : '' }}">Daftar Customer</a>
         </div>
