@@ -30,7 +30,11 @@ Route::get('/dashboard', function () {
         ->limit(5)
         ->get();
 
-    return view('dashboard', compact('topBuyers'));
+    $totalCustomer = \App\Models\Customer::count();
+    $totalNominal = \App\Models\Transaction::sum('total');
+    $totalProduk = \App\Models\Transaction::sum('quantity');
+
+    return view('dashboard', compact('topBuyers', 'totalCustomer', 'totalNominal', 'totalProduk'));
 })->middleware(['auth'])->name('dashboard');
 
 Route::middleware(['auth', 'verified', 'admin'])->group(function () {
