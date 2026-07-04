@@ -48,10 +48,20 @@ class CustomerController extends Controller
             'address' => 'required',
         ]);
 
+        $oldName = $customer->customer_name;
+        $newName = $request->customer_name;
+
         $data = $request->all();
         $data['user_id'] = auth()->id();
 
         $customer->update($data);
+
+        // Jika nama customer berubah, sinkronkan juga nama pembeli di seluruh transaksi lamanya
+        if ($oldName !== $newName) {
+            \App\Models\Transaction::where('customer_name', $oldName)
+                ->update(['customer_name' => $newName]);
+        }
+
         return redirect()->route('customers.index');
     }
 

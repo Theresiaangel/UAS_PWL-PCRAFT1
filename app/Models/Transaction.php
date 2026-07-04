@@ -11,7 +11,7 @@ class Transaction extends Model
         'quantity', 
         'unit_price', 
         'total',
-        'nama_pembeli',
+        'customer_name',
         'user_id'
     ];
 

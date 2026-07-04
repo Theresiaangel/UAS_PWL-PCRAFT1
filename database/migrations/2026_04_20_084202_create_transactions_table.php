@@ -9,18 +9,21 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-  public function up(): void
-{
-    Schema::create('transactions', function (Blueprint $table) {
-        $table->id();
-        $table->date('tanggal'); 
-        $table->string('keterangan_produk'); 
-        $table->decimal('harga_satuan', 15, 2); 
-        $table->integer('jumlah_barang');  
-        $table->decimal('total', 15, 2);      
-        $table->timestamps();
-    });
-}
+    public function up(): void
+    {
+        Schema::create('transactions', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('customer_id')->nullable();
+            $table->date('date'); 
+            $table->string('product_description'); 
+            $table->decimal('unit_price', 15, 2); 
+            $table->integer('quantity');  
+            $table->decimal('total', 15, 2);      
+            $table->string('customer_name')->nullable();
+            $table->timestamps();
+        });
+    }
 
     public function down(): void
     {

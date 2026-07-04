@@ -49,9 +49,9 @@
         </div>
     </div>
 
-    <table border="1" style="width: 100%; border-collapse: collapse; background-color: #ffcccc; font-family: 'Times New Roman', serif; text-align: center; border: 2px solid black;">
+    <table border="1" style="width: 100%; border-collapse: collapse; background-color: white; font-family: 'Times New Roman', serif; text-align: center; border: 2px solid black;">
         <thead>
-            <tr style="background-color: #ffcccc;">
+            <tr style="background-color: white;">
                 <th width="35%" style="color: black; padding: 15px; border: 2px solid black; font-weight: bold;">Nama Pembeli</th>
                 <th width="35%" style="color: black; padding: 15px; border: 2px solid black; font-weight: bold;">Total Nominal Pembelian</th>
                 <th width="30%" style="color: black; padding: 15px; border: 2px solid black; font-weight: bold;">Jumlah Pembelian</th>
@@ -60,18 +60,12 @@
         <tbody>
             @foreach($topBuyers as $buyer)
                 <tr>
-                    <td style="padding: 15px; border: 2px solid black; font-weight: bold;">{{ $buyer->nama_pembeli }}</td>
+                    <td style="padding: 15px; border: 2px solid black; font-weight: bold;">{{ $buyer->customer_name }}</td>
                     <td style="padding: 15px; border: 2px solid black; font-weight: bold;">Rp {{ number_format($buyer->total_nominal, 0, ',', '.') }}</td>
                     <td style="padding: 15px; border: 2px solid black; font-weight: bold;">{{ $buyer->total_transactions }}</td>
                 </tr>
             @endforeach
-            @for ($i = count($topBuyers); $i < 5; $i++)
-                <tr>
-                    <td style="padding: 24px; border: 2px solid black;"></td>
-                    <td style="padding: 24px; border: 2px solid black;"></td>
-                    <td style="padding: 24px; border: 2px solid black;"></td>
-                </tr>
-            @endfor
+
         </tbody>
     </table>
 @endsection

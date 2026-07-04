@@ -25,7 +25,7 @@ class TransactionController extends Controller
         'product_description' => 'required',
         'unit_price' => 'required|numeric',
         'quantity' => 'required|numeric',
-        'nama_pembeli' => 'required'
+        'customer_name' => 'required'
     ]);
 
     $data = $request->all();
@@ -34,11 +34,11 @@ class TransactionController extends Controller
     $data['user_id'] = auth()->id();
 
     // Cek apakah customer ada
-    $customer = \App\Models\Customer::where('customer_name', $request->nama_pembeli)->first();
+    $customer = \App\Models\Customer::where('customer_name', $request->customer_name)->first();
     
     if (!$customer) {
         \App\Models\Customer::create([
-            'customer_name' => $request->nama_pembeli,
+            'customer_name' => $request->customer_name,
             'email' => $request->email ?? '-',
             'phone_number' => $request->phone_number ?? '-',
             'address' => $request->address ?? '-',
@@ -73,7 +73,7 @@ class TransactionController extends Controller
         'product_description' => 'required',
         'unit_price' => 'required|numeric',
         'quantity' => 'required|numeric',
-        'nama_pembeli' => 'required'
+        'customer_name' => 'required'
     ]);
 
     $data = $request->all();

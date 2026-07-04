@@ -20,6 +20,6 @@ class Customer extends Model
     }
 
     public function getPurchaseCountAttribute() {
-        return \App\Models\Transaction::where('nama_pembeli', $this->customer_name)->count();
+        return \App\Models\Transaction::where('customer_name', $this->customer_name)->count();
     }
 }
