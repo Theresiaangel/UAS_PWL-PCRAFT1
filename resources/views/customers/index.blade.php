@@ -12,27 +12,27 @@
     </div>
 
     {{-- Tabel Customer --}}
-    <table style="width: 100%; border-collapse: collapse; border: 2px solid #000; font-family: 'Times New Roman', serif; background-color: transparent;">
+    <table class="custom-table">
         <thead>
-            <tr style="text-align: center; font-weight: bold; color: black;">
-                <th style="border: 2px solid #000; padding: 15px; width: 15%;">Nama Pembeli</th>
-                <th style="border: 2px solid #000; padding: 15px; width: 15%;">Email</th>
-                <th style="border: 2px solid #000; padding: 15px; width: 15%;">Nomor Telepon</th>
-                <th style="border: 2px solid #000; padding: 15px; width: 15%;">Alamat</th>
-                <th style="border: 2px solid #000; padding: 15px; width: 10%;">Pembelian ke -</th>
-                <th style="border: 2px solid #000; padding: 15px; width: 15%;">Action</th>
-                <th style="border: 2px solid #000; padding: 15px; width: 15%;">Diubah oleh</th>
+            <tr>
+                <th width="15%">Nama Pembeli</th>
+                <th width="15%">Email</th>
+                <th width="15%">Nomor Telepon</th>
+                <th width="15%">Alamat</th>
+                <th width="10%">Pembelian ke -</th>
+                <th width="15%">Action</th>
+                <th width="15%">Diubah oleh</th>
             </tr>
         </thead>
         <tbody>
             @forelse($customers as $c)
                 <tr>
-                    <td style="border: 2px solid #000; padding: 15px; text-align: center;">{{ $c->customer_name }}</td>
-                    <td style="border: 2px solid #000; padding: 15px; text-align: center;">{{ $c->email }}</td>
-                    <td style="border: 2px solid #000; padding: 15px; text-align: center;">{{ $c->phone_number }}</td>
-                    <td style="border: 2px solid #000; padding: 15px; text-align: center;">{{ $c->address }}</td>
-                    <td style="border: 2px solid #000; padding: 15px; text-align: center;">{{ $c->purchase_count }}</td>
-                    <td style="border: 2px solid #000; padding: 15px; text-align: center;">
+                    <td>{{ $c->customer_name }}</td>
+                    <td>{{ $c->email }}</td>
+                    <td>{{ $c->phone_number }}</td>
+                    <td>{{ $c->address }}</td>
+                    <td>{{ $c->purchase_count }}</td>
+                    <td>
                         <div style="display: flex; justify-content: center; gap: 15px; align-items: center;">
                             <a href="{{ route('customers.edit', $c->id) }}" style="text-decoration: none; font-size: 24px; color: #a0a0a0; font-weight: bold; background: #e0e0e0; border-radius: 50%; width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; transform: rotate(-45deg);">✏</a>
                             <form id="delete-form-{{ $c->id }}" action="{{ route('customers.destroy', $c->id) }}" method="POST" style="margin: 0;">
@@ -42,11 +42,11 @@
                             </form>
                         </div>
                     </td>
-                    <td style="border: 2px solid #000; padding: 15px; text-align: center;">{{ $c->user ? $c->user->name : '' }}</td>
+                    <td>{{ $c->user ? $c->user->name : '' }}</td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="7" style="border: 2px solid #000; padding: 40px; text-align: center; color: #a0a0a0; font-style: italic;">
+                    <td colspan="7" style="padding: 40px; color: #a0a0a0; font-style: italic;">
                         Belum ada data customer tersedia. Klik tombol (+) untuk menambah.
                     </td>
                 </tr>

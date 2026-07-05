@@ -2,7 +2,7 @@
 
 @section('content')
     <div style="margin-bottom: 20px;">
-        <h2 style="font-family: 'Times New Roman', serif; font-weight: bold; color: black; margin-top: 20px;">Hello Pcraft Lovers,</h2>
+
     </div>
 
     <div style="display: flex; justify-content: center; gap: 30px; margin-bottom: 40px; flex-wrap: wrap;">
@@ -49,23 +49,22 @@
         </div>
     </div>
 
-    <table border="1" style="width: 100%; border-collapse: collapse; background-color: white; font-family: 'Times New Roman', serif; text-align: center; border: 2px solid black;">
+    <table class="custom-table">
         <thead>
-            <tr style="background-color: white;">
-                <th width="35%" style="color: black; padding: 15px; border: 2px solid black; font-weight: bold;">Nama Pembeli</th>
-                <th width="35%" style="color: black; padding: 15px; border: 2px solid black; font-weight: bold;">Total Nominal Pembelian</th>
-                <th width="30%" style="color: black; padding: 15px; border: 2px solid black; font-weight: bold;">Jumlah Pembelian</th>
+            <tr>
+                <th width="35%">Nama Pembeli</th>
+                <th width="35%">Total Nominal Pembelian</th>
+                <th width="30%">Jumlah Pembelian</th>
             </tr>
         </thead>
         <tbody>
             @foreach($topBuyers as $buyer)
                 <tr>
-                    <td style="padding: 15px; border: 2px solid black; font-weight: bold;">{{ $buyer->customer_name }}</td>
-                    <td style="padding: 15px; border: 2px solid black; font-weight: bold;">Rp {{ number_format($buyer->total_nominal, 0, ',', '.') }}</td>
-                    <td style="padding: 15px; border: 2px solid black; font-weight: bold;">{{ $buyer->total_transactions }}</td>
+                    <td>{{ $buyer->customer_name }}</td>
+                    <td>Rp {{ number_format($buyer->total_nominal, 0, ',', '.') }}</td>
+                    <td>{{ $buyer->total_transactions }}</td>
                 </tr>
             @endforeach
-
         </tbody>
     </table>
 @endsection

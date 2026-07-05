@@ -7,6 +7,43 @@
     <style>
         body { margin: 0; font-family: Arial, sans-serif; background-color: #fff; }
         
+        /* Custom Table Styles */
+        .custom-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background-color: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .custom-table thead {
+            background: #d9383e;
+            color: white;
+        }
+        .custom-table th {
+            padding: 20px 15px;
+            font-size: 14px;
+            text-transform: uppercase;
+            font-weight: bold;
+            border: none;
+            text-align: center;
+        }
+        .custom-table td {
+            padding: 18px 15px;
+            border-bottom: 2px solid #eaeaea;
+            color: #4b4b4b;
+            font-weight: bold;
+            border-top: none; 
+            border-left: none; 
+            border-right: none;
+            text-align: center;
+        }
+        .custom-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
         /* Header Merah */
         .header {
             background-color: #cc0000;

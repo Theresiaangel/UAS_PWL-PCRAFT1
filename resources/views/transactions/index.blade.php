@@ -12,27 +12,27 @@
     </div>
 
     {{-- Tabel Transaksi --}}
-    <table style="width: 100%; border-collapse: collapse; border: 2px solid #000; font-family: 'Times New Roman', serif; background-color: transparent;">
+    <table class="custom-table">
         <thead>
-            <tr style="text-align: center; font-weight: bold; color: black;">
-                <th style="border: 2px solid #000; padding: 15px; width: 10%;">Tanggal</th>
-                <th style="border: 2px solid #000; padding: 15px; width: 15%;">Keterangan<br>Produk</th>
-                <th style="border: 2px solid #000; padding: 15px; width: 15%;">Harga</th>
-                <th style="border: 2px solid #000; padding: 15px; width: 10%;">Jumlah</th>
-                <th style="border: 2px solid #000; padding: 15px; width: 15%;">Nama Pembeli</th>
-                <th style="border: 2px solid #000; padding: 15px; width: 15%;">Action</th>
-                <th style="border: 2px solid #000; padding: 15px; width: 20%;">Diubah oleh</th>
+            <tr>
+                <th width="10%">Tanggal</th>
+                <th width="15%">Keterangan<br>Produk</th>
+                <th width="15%">Harga</th>
+                <th width="10%">Jumlah</th>
+                <th width="15%">Nama Pembeli</th>
+                <th width="15%">Action</th>
+                <th width="20%">Diubah oleh</th>
             </tr>
         </thead>
         <tbody>
             @forelse($transactions as $t)
                 <tr>
-                    <td style="border: 2px solid #000; padding: 15px; text-align: center; color: black; font-weight: bold;">{{ $t->date }}</td>
-                    <td style="border: 2px solid #000; padding: 15px; text-align: center; color: black; font-weight: bold;">{{ $t->product_description }}</td>
-                    <td style="border: 2px solid #000; padding: 15px; text-align: center; color: black; font-weight: bold;">Rp {{ number_format($t->unit_price, 0, ',', '.') }}</td>
-                    <td style="border: 2px solid #000; padding: 15px; text-align: center; color: black; font-weight: bold;">{{ $t->quantity }}</td>
-                    <td style="border: 2px solid #000; padding: 15px; text-align: center; color: black; font-weight: bold;">{{ $t->customer_name }}</td>
-                    <td style="border: 2px solid #000; padding: 15px; text-align: center;">
+                    <td>{{ $t->date }}</td>
+                    <td>{{ $t->product_description }}</td>
+                    <td>Rp {{ number_format($t->unit_price, 0, ',', '.') }}</td>
+                    <td>{{ $t->quantity }}</td>
+                    <td>{{ $t->customer_name }}</td>
+                    <td>
                         <div style="display: flex; justify-content: center; gap: 15px; align-items: center;">
                             <a href="{{ route('transactions.edit', $t->id) }}" style="text-decoration: none; font-size: 24px; color: #a0a0a0; font-weight: bold; background: #e0e0e0; border-radius: 50%; width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; transform: rotate(-45deg);">✏</a>
                             <form id="delete-form-{{ $t->id }}" action="{{ route('transactions.destroy', $t->id) }}" method="POST" style="margin: 0;">
@@ -42,11 +42,11 @@
                             </form>
                         </div>
                     </td>
-                    <td style="border: 2px solid #000; padding: 15px; text-align: center; color: black; font-weight: bold;">{{ $t->user ? $t->user->name : '' }}</td>
+                    <td>{{ $t->user ? $t->user->name : '' }}</td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="7" style="border: 2px solid #000; padding: 40px; text-align: center; color: black; font-style: italic;">
+                    <td colspan="7" style="padding: 40px; text-align: center; color: black; font-style: italic;">
                         Belum ada data transaksi tersedia.
                     </td>
                 </tr>
