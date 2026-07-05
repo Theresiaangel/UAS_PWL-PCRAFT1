@@ -19,7 +19,7 @@
             </div>
         </div>
 
-        <!-- Card 2: Total Nominal Pembelian -->
+        <!-- Card 2: Total Nominal Penjualan -->
         <div style="background-color: #d9383e; color: white; border-radius: 8px; padding: 15px 20px; width: 260px; display: flex; align-items: center; box-shadow: 4px 4px 8px rgba(0,0,0,0.3); font-family: 'Times New Roman', serif;">
             <div style="margin-right: 15px;">
                 <svg width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
@@ -28,7 +28,7 @@
                 </svg>
             </div>
             <div style="text-align: center; width: 100%;">
-                <div style="font-weight: bold; font-size: 16px; line-height: 1.2; margin-bottom: 5px;">Total Nominal<br>Pembelian</div>
+                <div style="font-weight: bold; font-size: 16px; line-height: 1.2; margin-bottom: 5px;">Total Nominal<br>Hasil Penjualan</div>
                 <div style="font-weight: bold; font-size: 22px;">{{ number_format($totalNominal, 0, ',', '.') }}</div>
             </div>
         </div>
@@ -43,7 +43,7 @@
                 </svg>
             </div>
             <div style="text-align: center; width: 100%;">
-                <div style="font-weight: bold; font-size: 18px; margin-bottom: 5px;">Total Produk</div>
+                <div style="font-weight: bold; font-size: 18px; margin-bottom: 5px;">Total Produk<br>yang Terjual</div>
                 <div style="font-weight: bold; font-size: 22px;">{{ $totalProduk }}</div>
             </div>
         </div>
@@ -53,7 +53,7 @@
         <thead>
             <tr>
                 <th width="35%">Nama Pembeli</th>
-                <th width="35%">Total Nominal Pembelian</th>
+                <th width="35%">Total Nominal Hasil Penjualan</th>
                 <th width="30%">Jumlah Pembelian</th>
             </tr>
         </thead>

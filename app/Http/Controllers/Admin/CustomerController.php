@@ -9,18 +9,18 @@ use Illuminate\Http\Request;
 class CustomerController extends Controller
 {
     public function index() {
-        $customers = Customer::all();
+        $customers = Customer::paginate(10);
         return view('customers.index', compact('customers'));
     }
     public function create()
     {
-        $customers = Customer::all();
+        $customers = Customer::paginate(10);
 
         return view('customers.create', compact('customers'));
     }
 
     public function edit (Customer $customer) {
-        $customers = Customer::all();
+        $customers = Customer::paginate(10);
 
         return view('customers.edit', compact('customer','customers'));
     }
@@ -37,7 +37,7 @@ class CustomerController extends Controller
         $data['user_id'] = auth()->id();
 
         Customer::create($data);
-        return redirect()->route('customers.index');
+        return redirect()->route('customers.index')->with('success', 'Customer berhasil ditambahkan!');
     }
 
     public function update(Request $request, Customer $customer) {
@@ -62,11 +62,11 @@ class CustomerController extends Controller
                 ->update(['customer_name' => $newName]);
         }
 
-        return redirect()->route('customers.index');
+        return redirect()->route('customers.index')->with('success', 'Data Customer berhasil diperbarui!');
     }
 
     public function destroy(Customer $customer) {
         $customer->delete();
-        return redirect()->route('customers.index');
+        return redirect()->route('customers.index')->with('success', 'Customer berhasil dihapus!');
     }
 }

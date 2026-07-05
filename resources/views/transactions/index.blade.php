@@ -4,9 +4,22 @@
 <div style="padding: 0 40px; background-color: transparent;">
     
     {{-- Bagian Header & Ikon Tambah --}}
-    <div style="position: relative; margin-bottom: 30px; text-align: center; margin-top: 20px;">
-        <h2 style="font-family: 'Times New Roman', serif; font-weight: bold; color: black; margin: 0; font-size: 36px; display: inline-block;">Tabel Transaksi Penjualan</h2>
-        <a href="{{ route('transactions.create') }}" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); text-decoration: none; background-color: black; color: white; padding: 10px 25px; border-radius: 30px; font-weight: bold; font-family: 'Times New Roman', serif; font-size: 18px; box-shadow: 4px 4px 8px rgba(0,0,0,0.4); display: flex; align-items: center; gap: 8px;">
+    <div style="text-align: center; margin-top: 20px; margin-bottom: 30px;">
+        <h2 style="font-family: 'Times New Roman', serif; font-weight: bold; color: black; margin: 0; font-size: 36px;">Tabel Transaksi Penjualan</h2>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="font-family: 'Times New Roman', serif; font-weight: bold; font-size: 18px;">Diurutkan berdasarkan :</span>
+            <form action="{{ route('transactions.index') }}" method="GET" style="margin: 0;">
+                <select name="sort" onchange="this.form.submit()" style="padding: 10px 40px 10px 20px; border-radius: 30px; font-weight: bold; font-family: 'Times New Roman', serif; font-size: 18px; border: 1.5px solid #000; outline: none; cursor: pointer; background: white url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'black\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3e%3cpolyline points=\'6 9 12 15 18 9\'%3e%3c/polyline%3e%3c/svg%3e') no-repeat right 15px center; background-size: 15px; appearance: none; -webkit-appearance: none; color: black; box-shadow: 4px 4px 8px rgba(0,0,0,0.1);">
+                    <option value="terbaru" {{ request('sort') != 'terlama' ? 'selected' : '' }}>Transaksi Terbaru</option>
+                    <option value="terlama" {{ request('sort') == 'terlama' ? 'selected' : '' }}>Transaksi Terlama</option>
+                </select>
+            </form>
+        </div>
+
+        <a href="{{ route('transactions.create') }}" style="text-decoration: none; background-color: black; color: white; padding: 10px 25px; border-radius: 30px; font-weight: bold; font-family: 'Times New Roman', serif; font-size: 18px; box-shadow: 4px 4px 8px rgba(0,0,0,0.4); display: flex; align-items: center; gap: 8px;">
             Add New <span style="font-size: 26px; line-height: 0.8; margin-bottom: 2px;">+</span>
         </a>
     </div>
@@ -53,6 +66,9 @@
             @endforelse
         </tbody>
     </table>
+    <div style="margin-top: 20px;">
+        {{ $transactions->links() }}
+    </div>
 </div>
 
 {{-- Custom Delete Confirmation Modal --}}

@@ -1,12 +1,15 @@
 @extends('layouts.admin')
 
 @section('content')
-<div style="padding: 40px 40px; background-color: white; min-height: 80vh;">
+<div style="padding: 0 40px; background-color: white; min-height: 80vh;">
     
     {{-- Bagian Header & Ikon Tambah --}}
-    <div style="position: relative; margin-bottom: 50px; display: flex; justify-content: center; align-items: center;">
+    <div style="text-align: center; margin-top: 20px; margin-bottom: 30px;">
         <h2 style="font-family: 'Times New Roman', serif; font-weight: bold; font-size: 36px; margin: 0; color: black;">Tabel Daftar Customer</h2>
-        <a href="{{ route('customers.create') }}" style="position: absolute; right: 0; text-decoration: none; background-color: black; color: white; padding: 10px 25px; border-radius: 30px; font-weight: bold; font-family: 'Times New Roman', serif; font-size: 18px; box-shadow: 4px 4px 8px rgba(0,0,0,0.4); display: flex; align-items: center; gap: 8px;">
+    </div>
+
+    <div style="display: flex; justify-content: flex-end; margin-bottom: 20px;">
+        <a href="{{ route('customers.create') }}" style="text-decoration: none; background-color: black; color: white; padding: 10px 25px; border-radius: 30px; font-weight: bold; font-family: 'Times New Roman', serif; font-size: 18px; box-shadow: 4px 4px 8px rgba(0,0,0,0.4); display: flex; align-items: center; gap: 8px;">
             Add New <span style="font-size: 26px; line-height: 0.8; margin-bottom: 2px;">+</span>
         </a>
     </div>
