@@ -39,6 +39,10 @@
                 <div style="font-size: 14px; color: #555; margin-bottom: 20px;">
                     @if(auth()->user()->email === 'terew@gmail.com')
                         Marketing
+                    @elseif(auth()->user()->email === 'ebet@gmail.com')
+                        Finance
+                    @elseif(auth()->user()->email === 'evelyn@gmail.com')
+                        CEO
                     @else
                         Administrator
                     @endif

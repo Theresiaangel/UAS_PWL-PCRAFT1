@@ -30,9 +30,9 @@
             <tr>
                 <th width="10%">Tanggal</th>
                 <th width="15%">Keterangan<br>Produk</th>
-                <th width="15%">Harga</th>
-                <th width="10%">Jumlah</th>
                 <th width="15%">Nama Pembeli</th>
+                <th width="10%">Jumlah</th>
+                <th width="15%">Harga</th>
                 <th width="15%">Action</th>
                 <th width="20%">Diubah oleh</th>
             </tr>
@@ -42,9 +42,9 @@
                 <tr>
                     <td>{{ $t->date }}</td>
                     <td>{{ $t->product_description }}</td>
-                    <td>Rp {{ number_format($t->unit_price, 0, ',', '.') }}</td>
-                    <td>{{ $t->quantity }}</td>
                     <td>{{ $t->customer_name }}</td>
+                    <td>{{ $t->quantity }}</td>
+                    <td>Rp {{ number_format($t->unit_price, 0, ',', '.') }}</td>
                     <td>
                         <div style="display: flex; justify-content: center; gap: 15px; align-items: center;">
                             <a href="{{ route('transactions.edit', $t->id) }}" style="text-decoration: none; font-size: 24px; color: #a0a0a0; font-weight: bold; background: #e0e0e0; border-radius: 50%; width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; transform: rotate(-45deg);">✏</a>
@@ -67,7 +67,7 @@
         </tbody>
     </table>
     <div style="margin-top: 20px;">
-        {{ $transactions->links() }}
+        {{ $transactions->links('vendor.pagination.custom') }}
     </div>
 </div>
 

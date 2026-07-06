@@ -56,6 +56,11 @@
             @endforelse
         </tbody>
     </table>
+
+    {{-- Pagination --}}
+    <div style="margin-top: 20px;">
+        {{ $customers->links('vendor.pagination.custom') }}
+    </div>
 </div>
 
 {{-- Custom Delete Confirmation Modal --}}
